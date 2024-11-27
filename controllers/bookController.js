@@ -4,7 +4,7 @@ const bookService = require('../services/bookService');
 exports.getAllBooks = async (req, res) => {
   try {
     const books = await bookService.getAllBooks();
-    res.render('index', { books }); // Renderiza la vista index.ejs con los libros
+    res.render('books', { books }); // Renderiza la vista index.ejs con los libros
   } catch (error) {
     res.status(500).send('Error al obtener los libros: ' + error.message);
   }
