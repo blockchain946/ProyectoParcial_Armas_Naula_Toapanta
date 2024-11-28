@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeti - Crear Cuenta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header bg-light py-3">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                <img src="../public/img/logo.jpg" alt="Logo Lib" class="logo" style="height: 50px;">
+            </a>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <h1 class="text-center text-primary">Registrar Nueva Cuenta</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/users" method="POST" class="p-4 border rounded shadow-sm bg-white">
+                    <div class="mb-3">
+                        <label for="nombres" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres Completos" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos Completos" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="identificacion" class="form-label">Identificación</label>
+                        <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="Cédula o DNI" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Celular">
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Casa">
+                    </div>
+                    <input type="hidden" name="perfil" value="Usuario">
+                    <input type="hidden" name="estadoPrestamo" value="false">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Registrar Cuenta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <nav class="nav justify-content-center mb-3">
+                <a href="/iniciar-sesion" class="nav-link text-white">Iniciar Sesión</a>
+                <a href="/crear-cuenta" class="nav-link text-white">Registro</a

@@ -1,14 +1,22 @@
 const userService = require('../services/userService');
 
-// Renderizar la vista de iniciar sesión
 exports.renderLoginPage = (req, res) => {
   res.render('iniciar-sesion', { nombrePagina: 'Iniciar Sesión', year: new Date().getFullYear() });
 };
 
-// Manejar la creación de un usuario
+
+exports.renderRegisterPage = (req, res) => {
+  res.render('crear-cuenta', { nombrePagina: 'Crear Cuenta', year: new Date().getFullYear() });
+};
+
+
 exports.createUser = async (req, res) => {
   try {
     const { nombres, apellidos, identificacion, correo, telefono, direccion, perfil } = req.body;
+
+    // Incluye estadoPrestamo como false por defecto
+    const estadoPrestamo = false;
+
     const newUser = await userService.createUser({ 
       nombres, 
       apellidos, 
@@ -19,7 +27,9 @@ exports.createUser = async (req, res) => {
       perfil, 
       estadoPrestamo 
     });
-    res.status(201).json(newUser);
+
+    // Redirigir al inicio de sesión tras crear el usuario
+    res.redirect('/iniciar-sesion');
   } catch (error) {
     res.status(500).send('Error al crear el usuario: ' + error.message);
   }
@@ -36,8 +46,13 @@ exports.loginUser = async (req, res) => {
     }
 
     // Aquí deberías implementar la verificación de contraseña si tienes un sistema de autenticación
-    res.send('Inicio de sesión exitoso'); // Cambia este mensaje según la lógica que necesites
+    res.redirect(`/userBook/${user.id}`);
   } catch (error) {
     res.status(500).send('Error al iniciar sesión: ' + error.message);
   }
+};
+
+exports.renderUser = (req, res) => {
+  const userId = req.params.id;
+  res.render('userBook', { nombrePagina: 'Library Management', year: new Date().getFullYear(), userId });
 };
